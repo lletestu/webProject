@@ -1,0 +1,79 @@
+.signup-form {
+
+	// Style
+	.box-shadow-bis(0; @form-box-shadow-y; @form-box-shadow-blur; @form-box-shadow-color);
+	background-color:	@form-background;
+	padding:			10px 20px;
+	text-align:			left;
+
+	// Position & Dimensions
+	margin-left:		auto;
+	margin-right: 		auto;
+	width:				100%;
+
+	@media (min-width: @screen-sm-min) {
+		width:			@form-width;
+	}
+
+	h2 {
+
+		text-align:		center;
+		text-transform: uppercase;
+		vertical-align: top;
+		padding-bottom: 15px;
+	}
+
+	.control-label {
+
+		padding-bottom:		5px;
+		@media (min-width: @screen-sm-min) {
+			padding-bottom:	0;
+		}
+	}
+
+	.form-control {
+
+		&:focus {
+
+			.box-shadow-bis(@form-control-box-shadow-x; @form-control-box-shadow-y; @form-control-box-shadow-blur; @form-control-box-shadow-color);
+			border-color:	@form-control-border-color;
+		}
+	}
+
+	.form-control-bis {
+
+		font-size:			@font-size*0.85;
+		height:				@input-height-base;
+		@media (min-width:	@screen-sm-min) {
+			padding-top:	@input-height-base*0.2;
+		}
+	}
+
+	a {
+		text-decoration: 	underline;
+	}
+}
+
+#signin-link {
+
+	// Style
+	border-top:			1px solid black;
+	text-align:			center;
+
+	// Position & Dimensions
+	margin:				40px auto;
+	margin-bottom:		0;
+	padding-top:		20px;
+	padding-bottom:		20px;
+	width:				80%;
+}
+
+.gen-form {
+
+	.signup-form;
+
+	@media (min-width: @screen-sm-min) {
+
+		margin-top: 	@navbar-height;
+	}
+}

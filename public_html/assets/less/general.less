@@ -1,0 +1,141 @@
+.card {
+
+	background-color: 	@gen-card-background;
+	margin: 			0 auto;
+	padding: 			15px 0;
+	.box-shadow-bis(@gen-card-box-shadow-x; @gen-card-box-shadow-y; @gen-card-box-shadow-blur; @gen-card-box-shadow-color);
+
+	.photo {
+
+		height:		@gen-card-photo-ratio*@gen-card-photo-width;
+		width:		@gen-card-photo-width;
+	}
+
+	.info {
+
+		color: 			@text-color;
+		font:			@font-style @font-variant @font-weight @font-size/@font-line-height @font-family;
+		height: 		auto;
+		padding: 		0 15px;
+		padding-top: 	20px;
+		text-align: 	left;
+
+		@media (min-width: @screen-sm-max) {
+
+			padding-top: 0;
+		}
+	}
+
+	.name {
+
+		color:			@gen-info-name-fontcolor;
+		font-family:	@gen-info-name-fontfamily;
+		font-size: 		@gen-info-name-fontsize;
+		font-style:		@gen-info-name-fontstyle;
+		font-weight: 	@gen-info-name-fontweight;
+	}
+
+	.mail {
+
+		color:			@gen-info-mail-fontcolor;
+		font-family:	@gen-info-mail-fontfamily;
+		font-size: 		@gen-info-mail-fontsize;
+		font-style:		@gen-info-mail-fontstyle;
+		font-weight: 	@gen-info-mail-fontweight;
+	}
+
+	.word {
+
+		color:			@gen-info-word-fontcolor;
+		font-family:	@gen-info-word-fontfamily;
+		font-size: 		@gen-info-word-fontsize;
+		font-style:		@gen-info-word-fontstyle;
+		font-weight: 	@gen-info-word-fontweight;
+		margin-top: 	10px;
+	}
+
+	.form-control, .word {
+		height: 			auto;
+		margin-left: 		auto;
+		margin-right: 		auto;
+	}
+
+	.row {
+
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+.instruction {
+
+	.border-radius(@gen-radius);
+
+	background:			@theme-color-7;
+	padding:			10px 20px;
+	width: 				100%;
+}
+
+#instruction-signup {
+
+	.instruction;
+
+	margin-top:		    -@navbar-height/2;
+	margin-bottom:  	@navbar-height/2;
+	text-align: 		left;
+}
+
+#instruction-signin {
+
+	.instruction;
+
+	margin:				@navbar-height/4 0;
+
+	@media (min-width: @screen-sm-min) {
+		margin:			@navbar-height/2 0;
+	}
+
+	@media (min-width: @screen-md-min) {
+		margin:			@navbar-height 0;
+	}
+}
+
+.margin-top {
+
+	margin-top: 		@gen-margin;
+}
+
+.section-container {
+
+	margin-left: 	auto;
+	margin-right:  	auto;
+	width: 			100%;
+
+	@media (min-width: @screen-xs-max) {
+
+		max-width: 		@screen-sm-min;
+			width: 		60%;
+	}
+
+	.row {
+
+		width: 		100%;
+	}
+}
+
+.capitalize {text-transform: capitalize;}
+.uppercase {text-transform: uppercase;}
+.lowercase {text-transform: lowercase;}
+
+.socialicon {
+
+	height: 	@gen-si-width;
+	margin: 	5px 10px;
+	width: 		@gen-si-width;
+}
+
+#privacy {
+
+	padding: 		10px;
+	padding-top: 	5px;
+}

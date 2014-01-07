@@ -1,0 +1,191 @@
+<section>
+
+    <div    class="panel panel-default"
+            id="navbar-dashboard"
+            role="navigation"
+            >
+
+        <div class="panel-body center-block">
+
+            <a class="navbar-button" href="/profile/view" title="Search a user">
+                <button class="button"
+                        id="showProfileButton"
+                        type="submit"
+                        >
+                    search user
+                </button>
+            </a>
+
+            <!-- Admins buttons -->
+            <?php if ($profile->member->isAdmin): ?>
+
+                <a class="navbar-button" href="/profile/add" title="Add an update">
+                    <button class="button"
+                            id="addUpdateButton"
+                            type="submit"
+                            >
+                        add updates
+                    </button>
+                </a>
+
+                <a class="navbar-button" href="/members/add" title="Add a patient to your patient list">
+                    <button class="button"
+                            id="addPatient"
+                            type="submit"
+                            >
+                        add patient
+                    </button>
+                </a>
+
+                <a class="navbar-button" href="/members/list" title="See all the users">
+                    <button class="button"
+                            id="ListPatientButton"
+                            type="submit"
+                            >
+                        user list
+                    </button>
+                </a>
+
+                <a class="navbar-button" href="/members/delete" title="Delete a user">
+                    <button class="button"
+                            id="deletePatientButton"
+                            type="submit"
+                            >
+                        delete user
+                    </button>
+                </a>
+
+            <?php endif; ?>
+
+            <a class="navbar-button" href="/profile/delete" title="Delete your profile">
+                <button class="button"
+                        id="deleteProfile"
+                        onclick="return confirm('Are you sur?')"
+                        type="submit"
+                        >
+                    delete profile
+                </button>
+            </a>
+
+        </div>
+    </div>
+
+    <div class="section-container" id="content">
+
+        <div class="user-profile" id="userProfile">
+
+            <h1 class="margin-top">your profile</h1>
+
+            <div class="card margin-top">
+                <div class="row">
+
+                    <div class="img col-sm-3">
+                        <div class="row">
+                            <div class="col-sm-12">
+
+                                <?php if($memberArray['image'] == null || $memberArray['image'] == ""):?>
+                                    <img    class="photo"
+                                            src="/assets/img/uploads/default_user.jpg"
+                                            />
+                                <?php else:?>
+                                    <img    class="photo"
+                                            src="/assets/img/uploads/<?php echo $memberArray['image']?>"
+                                            />
+                                <?php endif;?>
+
+                            </div>
+                        </div>
+                    </div>
+                    <p class="info info-type1 col-sm-9">
+                        
+                        <span class="name"><span class="capitalize"><?php echo $memberArray['firstname']?></span>&nbsp;<span class="uppercase"><?php echo $memberArray['lastname']?></span></span><br />
+
+                        email : <span class="mail lowercase"><a href="mailto:nom@ece.fr"><?php echo $memberArray['email']?></a></span><br />
+
+                        <?php if($memberArray['sex'] == "F"):?>
+                            sex : <span class="sex capitalize"></span>female<br />
+                        <?php else:?>
+                            sex : <span class="sex capitalize"></span>male<br />
+                        <?php endif;?>
+
+                        <?php if($memberArray['isAdmin'] == 0):?>
+                            category : <span class="category capitalize">patient</span><br />
+                        <?php else:?>
+                            category : <span class="category capitalize">doctor</span><br />
+                        <?php endif;?>
+
+                        <?php if($memberArray['website'] != null):?>
+                            website : <span class="website lowercase"><a href=""><?php echo $memberArray['website']?></a></span>
+                        <?php else:?>
+                            website : <span class="website lowercase"><a href="">no website updated</a></span>
+                        <?php endif;?>
+                        
+                    </p>
+                </div>
+
+                <div class="row description">
+                    <p class="info word form-control">
+
+                        <?php if($memberArray['description'] != null):?>
+                            <?php echo $memberArray['description']?>
+                        <?php else:?>
+                            No description given.
+                        <?php endif;?>
+
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="update-list" id="updateList">
+
+            <h1 class="margin-top">updates</h1>
+
+            <table class="table table-hover table-updates margin-top">
+
+                <thead>
+                    <?php
+                        echo '<tr>';
+                        foreach ($headerUpdate as $value) {
+                            echo '<td class="titleArray">';
+                            echo $value;
+                            echo '</td>';
+                        }
+                        echo '</tr>';
+                    ?>
+                </thead>
+
+                <?php if ($updateArray != null): ?>
+                    <tbody>
+                        <?php
+                            foreach ($updateArray as $member => $element) {
+                                echo '<tr>';
+                                echo '<td>';
+                                echo $member;
+                                echo '</td>';
+
+                                foreach ($element as $value) {
+                                    echo '<td>';
+                                    echo $value;
+                                    echo '</td>';
+                                }
+                                echo '</tr>';
+                            }
+                        ?>
+                    </tbody>
+                <?php endif; ?>
+
+            </table>
+
+        </div>
+
+        <div id="vimeoList">
+            <h1 class="margin-top">Vimeo profile</h1>
+            <div id="update"></div>
+            <button class="btn btn-primary" onclick="loadFunction()">Show/Refresh</button>
+        </div>
+
+    </div>
+
+</section>

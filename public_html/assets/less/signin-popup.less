@@ -1,0 +1,33 @@
+#signin-popup {
+    //display: none;
+    border-radius:10px; -moz-border-radius:10px; -webkit-border-radius:10px;
+    position: absolute;
+    width: auto;
+    height: auto;
+    right: 1%;
+    top: @navbar-height+10;
+
+}
+
+.hidden_popup {
+    .transitionKit(visibility 0s ease-in-out 0.5s,opacity 0.5s ease-in-out);
+    visibility: hidden;
+    opacity:0;
+}
+
+.display_popup{
+    visibility: visible;
+    opacity:1;
+    .transitionKit(visibility 0s ease-in-out 0s,opacity 0.5s ease-in-out);
+}
+
+#fleche {
+    width:0; height:0;
+    border:10px solid transparent;
+    border-top:none;
+    border-bottom:10px solid @theme-color-6;
+    position:absolute;
+    top:-10px;
+    left:205px;
+}
+

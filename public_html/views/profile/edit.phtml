@@ -1,0 +1,108 @@
+<section id="editProfile">
+
+    <p>
+        <?php
+        if (isset($pseudoAlreadyUse) && ($pseudoAlreadyUse == true)) {
+            echo "This email is already used, please choose another one.";
+        }
+        ?>
+    </p>
+
+    <?php if($validateEdit == false): ?>
+    <div class="gen-form" id="editProfile">
+
+        <form   action="/profile/edit"
+                class="form-horizontal"
+                enctype="multipart/form-data"
+                method="post"
+                name="formSign"
+                onsubmit="return validateFormEmail()"
+                role="form"
+                >
+
+            <h2>edit your profile</h2>
+
+            <div class="form-group" id="emailDiv">
+
+                <label class="col-sm-4 control-label" for="email">Email</label>
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            id="email"
+                            maxlength="30"
+                            name="email"
+                            onblur="return hideHelp(this.name)"
+                            onfocus="return showHelp(this.name)"
+                            size="30"
+                            type="text"
+                            value="<?php echo $memberArray['email']?>"
+                            onclick="javascript:this.value=''"
+                        />
+                </div>
+            </div>
+
+            <!-- Needed for JS pop up helper -->
+            <div id="container"></div>
+
+            <div class="form-group">
+
+                <label class="col-sm-4 control-label" for="description">Description</label>
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            name="description"
+                            type="text"
+                            value="<?php echo $memberArray['description']?>"
+                            onFocus="javascript:this.value=''"
+                        />
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-4 control-label" for="image">Image (JPG/PNG)</label>
+                <div class="col-sm-8 form-control-bis">
+                    <input  id="image"
+                            name="image"
+                            type="file"
+                            value="<?echo $memberArray['image']?>"/>
+                </div>
+            </div>
+
+            <div class="form-group">
+
+                <label class="col-sm-4 control-label" for="website">Website</label>
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                    name="website"
+                    onFocus="javascript:this.value=''"
+                    type="text"
+                    value="<?php echo $memberArray['website']?>"
+                    />
+                </div>
+            </div>
+
+            <div class="form-group horizontal-center">
+                <button     class="btn btn-primary pull-right"
+                            id="sendButton"
+                            type="submit">
+                    Update profile
+                </button>
+            </div>
+        </form>
+    </div>
+    <?php else: ?>
+        <div id="wellDelete" class="card margin-top">
+
+            Your profile is well edited !<br />
+            <br />
+            <a href="/profile/index">
+                <button class="btn btn-primary"
+                        id="sendButton"
+                        type="button">
+                    dashboard
+                </button>
+            </a>
+
+        </div>
+    <?php endif; ?>
+
+</section>

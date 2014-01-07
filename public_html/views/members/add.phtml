@@ -1,0 +1,178 @@
+<section>
+
+    <div class="section-container">
+
+        <div class="gen-form" id="editProfile">
+
+            <form   action=""
+                    class="form-horizontal"
+                    method="post"
+                    role="form"
+                    >
+
+                <h2>add new patient</h2>
+
+                <div class="form-group">
+
+                    <label class="col-sm-4 control-label" for="firstname">Firstname</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control"
+                                id="firstname"
+                                maxlength="30"
+                                name="firstname"
+                                placeholder="Firstname"
+                                size="30"
+                                type="text"
+                                value=""
+                                />
+                    </div>
+                </div>
+
+                <div class="form-group">
+
+                    <label class="col-sm-4 control-label" for="lastname">Lastname</label>
+                    <div class="col-sm-8">
+                        <input  class="form-control"
+                                id="lastname"
+                                maxlength="30"
+                                name="lastname"
+                                placeholder="LASTNAME"
+                                size="30"
+                                type="text"
+                                value=""
+                                />
+                    </div>
+                </div>
+
+                <div class="form-group horizontal-center">
+                    <button     class="btn btn-primary pull-right"
+                                id="showListButton"
+                                type="submit">
+                        Add patient
+                    </button>
+                </div>
+            </form>
+        </div>
+
+        <?php if (isset($isRegistered) && !$isRegistered): ?>
+
+            <br />
+            <p>No user registered with this name has been found.</p>
+
+        <?php elseif (isset($memberArray)): ?>
+
+            <!-- case where the user is found -->
+            <div class="user-profile" id="userProfile">
+
+                <h1 class="margin-top">user profile</h1>
+
+                <div class="card">
+                    <div class="row">
+
+                        <div class="img col-sm-3">
+                            <div class="row">
+                                <div class="col-sm-12">
+
+                                    <?php if($memberArray['image'] == null || $memberArray['image'] == ""):?>
+                                        <img    class="photo"
+                                                src="/assets/img/uploads/default_user.jpg"
+                                            />
+                                    <?php else:?>
+                                        <img    class="photo"
+                                                src="/assets/img/uploads/<?php echo $memberArray['image']?>"
+                                            />
+                                    <?php endif;?>
+
+                                </div>
+                            </div>
+                        </div>
+                        <p class="info info-type1 col-sm-9">
+                            
+                            <span class="name"><span class="capitalize"><?php echo $memberArray['firstname']?></span>&nbsp;<span class="uppercase"><?php echo $memberArray['lastname']?></span></span><br />
+
+                            email : <span class="mail lowercase"><a href="mailto:nom@ece.fr"><?php echo $memberArray['email']?></a></span><br />
+
+                            <?php if($memberArray['sex'] == "F"):?>
+                                sex : <span class="sex capitalize"></span>female<br />
+                            <?php else:?>
+                                sex : <span class="sex capitalize"></span>male<br />
+                            <?php endif;?>
+
+                            <?php if($memberArray['isAdmin'] == 0):?>
+                                category : <span class="category capitalize">patient</span><br />
+                            <?php else:?>
+                                category : <span class="category capitalize">doctor</span><br />
+                            <?php endif;?>
+
+                            <?php if($memberArray['website'] != null):?>
+                                website : <span class="website lowercase"><a href=""><?php echo $memberArray['website']?></a></span>
+                            <?php else:?>
+                                website : <span class="website lowercase"><a href="">no website updated</a></span>
+                            <?php endif;?>
+                            
+                        </p>
+                    </div>
+
+                    <div class="row description">
+                        <p class="info word form-control">
+
+                            <?php if($memberArray['description'] != null):?>
+                                <?php echo $memberArray['description']?>
+                            <?php else:?>
+                                No description given.
+                            <?php endif;?>
+
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="update-list" id="updateList">
+
+                <h1 class="margin-top">updates</h1>
+
+                <table class="table table-hover table-updates margin-top">
+
+                    <thead>
+                        <?php
+                            echo '<tr>';
+                            foreach ($headerUpdate as $value) {
+                                echo '<td class="titleArray">';
+                                echo $value;
+                                echo '</td>';
+                            }
+                            echo '</tr>';
+                        ?>
+                    </thead>
+
+                    <?php if ($updateArray != null): ?>
+                        <tbody>
+                            <?php
+                                foreach ($updateArray as $member => $element) {
+                                    echo '<tr>';
+                                    echo '<td>';
+                                    echo $member;
+                                    echo '</td>';
+
+                                    foreach ($element as $value) {
+                                        echo '<td>';
+                                        echo $value;
+                                        echo '</td>';
+                                    }
+                                    echo '</tr>';
+                                }
+                            ?>
+                        </tbody>
+                    <?php endif; ?>
+
+                </table>
+            </div>
+
+        <?php elseif (isset($isAlreadyAdd) && $isAlreadyAdd): ?>
+
+            <p>This user is already one of your patient.</p>
+
+        <?php endif; ?>
+
+    </div>
+</section>

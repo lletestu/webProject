@@ -1,0 +1,62 @@
+footer {
+
+	// Style
+	background-color:   @theme-color-6;
+	color:				@footer-fontcolor;
+	font-family:		@footer-fontfamily;
+	font-size: 			@footer-fontsize;
+	font-style:			@footer-fontstyle;
+	font-weight: 		@footer-fontweight;
+	padding:            25px 0px 10px 0px;
+	text-align:         center;
+	
+	// Position & Dimensions
+	height:             @footer-height-xs;
+	margin:             0 auto;
+	max-width:          none !important;
+		width:          @footer-width;
+
+	@media (min-width: @screen-sm-min) {
+		height: 		@footer-height;
+	}
+    
+    // Property for stylised footer
+    position:           fixed;
+    left:               0px;
+    bottom:             0px;
+    z-index:            1;
+
+    #logo_ECE {
+
+		max-height: 	@footer-logo-height-max;
+			height: 	@footer-logo-height;
+		max-width: 		@footer-logo-width-max;
+			width: 		@footer-logo-width;
+
+		padding: 		10px;
+		padding-top: 	15px;
+    }
+
+    #title {
+
+		color: 			@footer-title-fontcolor;
+    	font-size: 		@footer-title-fontsize;
+    }
+
+    #text {
+
+    	padding-top: 	15px;
+    }
+}
+
+#footerSpacer {
+
+    height:             @footer-height-xs;
+
+    position:           relative;
+    z-index:            -1;
+
+    @media (min-width: @screen-sm-min) {
+		height: 		@footer-height;
+	}
+}

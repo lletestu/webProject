@@ -1,0 +1,132 @@
+<section>
+
+    <div class="section-container">
+        <div class="update-list" id="updateList">
+
+            <h1 class="margin-top">user list</h1>
+
+            <div class="gen-form margin-top">
+
+                <form action=""
+                      class="form-horizontal"
+                      id="filterButton"
+                      method="post"
+                      role="form"
+                    >
+
+                    <h2>filter</h2>
+
+                    <div class="form-group">
+
+                        <div class="col-sm-11 col-sm-offset-1">
+                            <input checked
+                                   name="filterButton"
+                                   type="radio"
+                                   value="justPatient"
+                                />
+                            My patient<br/>
+                            <input checked
+                                   name="filterButton"
+                                   type="radio"
+                                   value="withoutPatient"
+                                />
+                            Other patient<br/>
+                            <input checked
+                                   name="filterButton"
+                                   type="radio"
+                                   value="otherDoctor"
+                                />
+                            Other doctor<br/>
+                            <input checked
+                                   name="filterButton"
+                                   type="radio"
+                                   value="anyFilter"
+                                />
+                            Any filter<br/>
+                        </div>
+                        <br/>
+                        <br/>
+                        <label class="col-sm-7 control-label" for="nbMember">Maximum of profile showed</label>
+
+                        <div class="col-sm-5">
+                            <input class="form-control"
+                                   id="nbMember"
+                                   maxlength="4"
+                                   name="nbMember"
+                                   type="text"
+                                   size="4"
+                                   value="10"
+                                />
+                        </div>
+                    </div>
+
+                    <div class="form-group horizontal-center">
+                        <button class="btn btn-primary pull-right"
+                                id="showListButton"
+                                type="submit">
+                            Show
+                        </button>
+                    </div>
+
+                </form>
+
+            </div>
+
+            <div class="update-list">
+                <?php if (isset($headerArray) && isset($list)): ?>
+                    <h1 class="margin-top">users found</h1>
+
+                    <table class="table table-hover table-updates margin-top">
+
+                        <thead>
+                        <?php
+                        echo '<tr>';
+                        echo '<td class="titleArray">';
+                        echo '#';
+                        echo '</td>';
+                        foreach ($headerArray as $value) {
+                            echo '<td class="titleArray">';
+                            echo $value;
+                            echo '</td>';
+                        }
+                        echo '</tr>';
+                        ?>
+                        </thead>
+
+                        <?php if ($list != null): ?>
+                            <tbody>
+                            <?php
+                            foreach ($list as $member => $element) {
+                                echo '<tr>';
+                                echo '<td>';
+                                echo $member;
+                                echo '</td>';
+                                foreach ($element as $value) {
+                                    echo '<td>';
+                                    if($value == "F"){
+                                        echo "Female";
+                                    }elseif($value == "M"){
+                                        echo "Male";
+                                    }elseif($value == '0'){
+                                        echo "Patient";
+                                    }elseif($value == '1'){
+                                        echo "Doctor";
+                                    }else{
+                                        echo $value;
+                                    }
+                                    echo '</td>';
+                                }
+                                echo '</tr>';
+                            }
+                            ?>
+                            </tbody>
+                        <?php endif; ?>
+
+                    </table>
+                <?php endif; ?>
+
+            </div>
+
+        </div>
+
+</section>

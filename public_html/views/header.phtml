@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="en-EN">
+
+<head>
+    <meta charset="utf-8"/>
+    <meta name="author" content="Clément CAMBOULIVES, Lauren LETESTU, Théo FIDRY"/>
+    <meta name="Indentifier-URL" content=""/>
+    <meta name="copyright" content="© Copyright 2013 ECE Health Management System Paris. Tous droits réservés."/>
+    <meta http-equiv="robots" content="INDEX,NOFOLLOW"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ECE Health Mangement System</title>
+
+    <link rel="icon" type="image/png" href="/assets/img/favicon.ico"/>
+    <link rel="stylesheet/less" href="/assets/less/styles.less" type="text/css"/>
+
+    <script src="/assets/js/script.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <header class="navbar navbar-default navbar-fixed-top" id="header" role="navigation">
+        <div class="container">
+
+            <div class="navbar-header">
+
+                <button class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse" type="button">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <?php if (isset($_SESSION['email'])): ?>
+                    <!-- Case when user is logged -->
+                    <a href="/profile/index">
+                        <img alt="Logo" id="logo" src="/assets/img/logo.png" title="ECE Health Mangement System" />
+                    </a>
+
+                <?php else: ?>
+                    <!-- Case when user is not logged -->
+                    <a href="/#">
+                        <img alt="Logo" id="logo" src="/assets/img/logo.png" title="ECE Health Mangement System" />
+                    </a>
+
+                <?php endif; ?>
+            </div>
+
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right navbar-collapse collapse">
+
+                    <?php if (isset($_SESSION['email'])): ?>
+
+                        <!-- Case when user is logged -->
+                        <li><a class="navlink" href="/profile/index" title="Go to the dashboard">dashboard</a></li>
+                        <li><a class="navlink" href="/#" title="Contact us">contact</a></li>
+                        <li class="dropdown address">
+                            <a class="dropdown-toggle navlink" data-toggle="dropdown" href="#">
+                                <span class="capitalize"><?php echo $_SESSION['firstname']?></span> <span class="uppercase"><?php echo $_SESSION['lastname'] ?></span><b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li><a class="navlink" href="/profile/index" title="View your profile">view profile</a></li>
+                                <li><a class="navlink" href="/profile/edit" title="Edit your profile">edit profile</a></li>
+                                <li><a class="navlink" href="/members/logout">log out</a></li>
+                            </ul>
+                        </li>
+
+                    <?php else: ?>
+
+                        <!-- Case when user is not logged -->
+
+
+                        <li><a class="navlink" href="/#" title="Go back home">home</a></li>
+                        <li><a class="navlink" href="/#about-us" title="Learn more abous us">about us</a></li>
+                        <li><a class="navlink" href="/#contact-us" title="See were we are located">contact us</a></li>
+                        <li><a class="navlink" href="/members/signin" title="See were we are located">sign in</a></li>
+                        <!--<li class="logX"><a class="navlink" title="Sign in with your account" onclick= signin_Button_onClick() >sign in</a></li>-->
+
+                    <?php endif; ?>
+
+                </ul>
+            </div>
+
+        </div>
+    </header>
+
+    <!-- balises fermées dans le footer-->
+    <div id="background">
+    <div id="body_container">

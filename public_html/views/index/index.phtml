@@ -1,0 +1,252 @@
+<?php if (isset($_SESSION['email']) == false): ?>
+<section id="form">
+
+    <div class="container">
+        <p class="hidden-xs" id="instruction-signup">
+            Consult your personal index card to reach at any time all your document concerning your examinations and medical meeting. You have real time access to all comments of your doctors.
+        </p>
+    </div>
+
+    <div class="signup-form">
+        <form   action="/members/signup"
+                class="form-horizontal"
+                enctype="multipart/form-data"
+                method="post"
+                name="formSign"
+                onsubmit="return validateFormSignUp()"
+                role="form"
+            >
+
+            <h2>sign up</h2>
+
+            <div class="form-group" id="firstnameDiv">
+                <label class="col-sm-4 control-label" for="firstname">Firstname*</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            id="firstname"
+                            maxlength="30"
+                            name="firstname"
+                            placeholder="Firstname"
+                            size="30"
+                            type="text"
+                        />
+                </div>
+            </div>
+
+            <div class="form-group" id="lastnameDiv">
+                <label class="col-sm-4 control-label" for="lastname">Lastname*</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            id="lastname"
+                            maxlength="30"
+                            name="lastname"
+                            placeholder="Lastname"
+                            size="30"
+                            type="text"
+                        />
+                </div>
+            </div>
+
+            <div class="form-group" id="emailDiv">
+                <label class="col-sm-4 control-label" for="email">Email*</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            id="email"
+                            maxlength="30"
+                            name="email"
+                            onblur="return hideHelp(this.name)"
+                            onfocus="return showHelp(this.name)"
+                            placeholder="Email"
+                            size="30"
+                            type="text"
+                        />
+                </div>
+            </div>
+            <div id="container"></div>
+
+            <div class="form-group " id="passwordDiv">
+                <label class="col-sm-4 control-label" for="password">Password*</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            id="password"
+                            name="password"
+                            onblur="return hideHelp(this.name)"
+                            onfocus="return showHelp(this.name)"
+                            placeholder="Password"
+                            type="password"
+                        />
+                </div>
+            </div>
+            <div id="containerP"></div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="description">Description</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            name="description"
+                            placeholder="Your text..."
+                            type="text"
+                        />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="image">Image (JPG/PNG)</label>
+
+                <div class="col-sm-8 form-control-bis">
+                    <input  id="image"
+                            name="image"
+                            type="file"
+                            value=""
+                        />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="website">Website</label>
+
+                <div class="col-sm-8">
+                    <input  class="form-control"
+                            name="website"
+                            placeholder="http://yoururl"
+                            type="text"
+                        />
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="isAdmin">Profile type</label>
+
+                <div class="col-sm-8 form-control-bis">
+                    <select name="isAdmin" id="isAdmin">
+                        <option value="0">Patient</option>
+                        <option value="1">Doctor</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="col-sm-4 control-label" for="sexe">Sex</label>
+
+                <div class="col-sm-8 form-control-bis">
+                    <select name="sexe" id="sexe">
+                        <option value="F">Female</option>
+                        <option value="M">Male</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group horizontal-center">
+                <button class="btn btn-primary" id="submitButton" type="submit">Create my account</button>
+            </div>
+        </form>
+
+        <p id="signin-link">
+            Already registered ? <a href="/members/signin" title="Sign in with you account.">Sign in</a>
+        </p>
+    </div>
+</section>
+<?php endif; ?>
+
+<section id="about-us" name="about-us">
+    <div class="container">
+        <div class="row card">
+            <div class="img col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img class="photo" src="/assets/img/uploads/default_user.jpg" />
+                    </div>
+                </div>
+                <div id="SN" class="row">
+                    <div class="col-sm-12">
+                        <a title="See my Linkedin profile" href="http://www.linkedin.com/pub/clement-camboulives/70/23a/839">
+                            <img alt="L" class="socialicon" src="/assets/img/sn/64x64/lin.png" /></a>
+                    </div>
+                </div>
+            </div>
+            <p class="info col-sm-9">
+                <span class="name">Clément CAMBOULIVES</span><br />
+                <span class="position">ING4, Communication Vice-President at iTeam.org</span><br />
+                <span class="mail"><a href="mailto:camboulives@ece.fr">camboulives@ece.fr</a></span><br />
+                <span class="phone">06 83 61 65 43</span><br />
+                <span class="word form-control">"Deeply interested in high technologies and computer engeneering, I am  motivated and I look forward to learning more about IT"</span>
+            </p>
+        </div>
+
+        <div class="row card">
+            <div class="img col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img class="photo" src="/assets/img/uploads/theo_fidry.jpg" />
+                    </div>
+                </div>
+                <div id="SN" class="row">
+                    <div class="col-sm-12">
+                        <a title="See my Linkedin profile" href="http://www.linkedin.com/pub/théo-fidry/6b/5b8/329">
+                            <img alt="L" class="socialicon" src="/assets/img/sn/64x64/lin.png" /></a>
+                        <a title="See my Viadeo profile" href="http://fr.viadeo.com/fr/profile/théo.fidry">
+                            <img alt="V" class="socialicon" src="/assets/img/sn/64x64/vimeo.png" /></a>
+                    </div>
+                </div>
+            </div>
+            <p class="info col-sm-9">
+                <span class="name">Théo FIDRY</span><br />
+                <span class="position">DSI at JEECE, Junior-Entreprise of ECE Paris</span><br />
+                <span class="mail"><a href="mailto:theo.fidry@jeece.fr">theo.fidry@jeece.fr</a></span><br />
+                <span class="phone">06 26 55 35 23</span><br />
+                <span class="word form-control">"Motivated, hardworking and curious, I like to be aware of all the new technologies, learn new skills and have a passion for web technologies."</span>
+            </p>
+        </div>
+
+        <div class="row card">
+            <div class="img col-sm-3">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <img class="photo" src="/assets/img/uploads/Lauren_Letestu.jpg" />
+                    </div>
+                </div>
+                <div id="SN" class="row">
+                    <div class="col-sm-12">
+                        <a title="See my Linkedin profile" href="http://www.linkedin.com/in/laurenletestu/">
+                            <img alt="L" class="socialicon" src="/assets/img/sn/64x64/lin.png" /></a>
+                    </div>
+                </div>
+            </div>
+            <p class="info col-sm-9">
+                <span class="name">Lauren LETESTU</span><br />
+                <span class="position">Vice-president of ECEBORG (Robotics club) at ECE Paris</span><br />
+                <span class="mail"><a href="mailto:letestu@ece.fr">letestu@ece.fr</a></span><br />
+                <span class="phone">06 77 01 97 82</span><br />
+                <span class="word form-control">"Being passionate about IT, I have had the opportunity to participate in various projects where I have developped solid skill. Motivated and curious, I want continue to develop my IT skill."</span>
+            </p>
+        </div>
+    </div>
+</section>
+
+
+<section id="contact-us" name="contact-us">
+    <div class="containerA">
+        <div class="map col-lg-12">
+            <div class="contentMap">
+                <div id="map-canvas"></div>
+            </div><!-- /content Map-->
+        </div>
+        <div id="contact">
+            <img alt="ECE buildings" src="/assets/img/others/ECE_building.jpg" />
+            <p>
+                Immeuble POLLUX<br />
+                37, Quai de Grenelle<br />
+                75015 Paris<br />
+                FR
+            </p>
+        </div>
+    </div>
+</section>
+
+
+

@@ -1,0 +1,15 @@
+# In order to activate the htaccess file, rename htaccess.txt in .htaccess
+# and the htpasswd.txt file in .htpasswd
+# User     : admin
+# Password : admin
+# Don't forget to change the path of the .htaccess in the AuthUserFile directive
+
+Order deny,allow
+Deny from all
+
+AuthName "Admin user required:"
+AuthType Basic
+AuthUserFile ".htaccess"
+Require valid-user
+
+Options -Indexes

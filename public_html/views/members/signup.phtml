@@ -1,0 +1,138 @@
+<section>
+    <p>
+        <?php
+        if ($pseudoAlreadyUse === true || $nomAlreadyUse == true) {
+            echo "You are not registered, you email is already add, please try again.";
+        }
+        ?>
+    </p>
+
+    <?php if($validateSignup == false): ?>
+    <form class="form-horizontal signup-form" name="formSign" role="form" method="post" enctype="multipart/form-data" action="/members/signup"
+          onsubmit="return validateFormSignUp()">
+
+        <h2>sign up</h2>
+
+        <div class="form-group" id="firstnameDiv">
+            <label for="firstname" class="col-sm-4 control-label">Firstname</label>
+
+            <div class="col-sm-8">
+                <input type="text" name="firstname" class="form-control" size=30 maxlength="30"
+                       placeholder="Firstname"/>
+            </div>
+        </div>
+
+        <div class="form-group" id="lastnameDiv">
+            <label for="lastname" class="col-sm-4 control-label">Lastname</label>
+
+            <div class="col-sm-8">
+                <input type="text" name="lastname" class="form-control" size=30 maxlength="30"
+                       placeholder="Lastname"/>
+            </div>
+        </div>
+
+        <div class="form-group" id="emailDiv">
+            <label for="email" class="col-sm-4 control-label">Email</label>
+
+            <div class="col-sm-8">
+                <input type="text" name="email" class="form-control" size=30 maxlength="30" placeholder="Email"
+                       onfocus="return showHelp(this.name)"
+                       onblur="return hideHelp(this.name)"/>
+            </div>
+        </div>
+        <div id="container"></div>
+
+        <div class="form-group" id="passwordDiv">
+            <label for="password" class="col-sm-4 control-label">Password</label>
+
+            <div class="col-sm-8">
+                <input type="password" name="password" class="form-control" placeholder="Password"
+                       onfocus="return showHelp(this.name)"
+                       onblur="return hideHelp(this.name)"/>
+            </div>
+        </div>
+        <div id="containerP"></div>
+
+        <div class="form-group">
+            <label for="description" class="col-sm-4 control-label">Description</label>
+
+            <div class="col-sm-8">
+                <input type="text" name="description" class="form-control" placeholder="Your text..."/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="image" class="col-sm-4 control-label">Image (JPG/PNG)</label>
+
+            <div class="col-sm-8 form-control-bis">
+                <input type="file" name="image" id="image" value=""/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="website" class="col-sm-4 control-label">Website</label>
+
+            <div class="col-sm-8">
+                <input type="text" name="website" class="form-control" placeholder="http://yoururl"/>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="isAdmin" class="col-sm-4 control-label">Profile type</label>
+
+            <div class="col-sm-8 form-control-bis">
+                <select name="isAdmin" id="isAdmin">
+                    <option value="0">Patient</option>
+                    <option value="1">Doctor</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="sexe" class="col-sm-4 control-label">Sex</label>
+
+            <div class="col-sm-8 form-control-bis">
+                <select name="sexe" id="sexe">
+                    <option value="F">Female</option>
+                    <option value="M">Male</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="row">
+
+            <div class="form-group col-xs-9">
+                <div class="col-sm-offset-1 col-sm-8">
+                    <div class="checkbox">
+                        <label>
+                            <input type="checkbox"/> Remember me
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group col-xs-3">
+                <div class="col-sm-8">
+                    <button type="submit" class="btn btn-primary">Sign up</button>
+                </div>
+            </div>
+        </div>
+    </form>
+    <?php else: ?>
+        <div id="wellDelete" class="card margin-top">
+
+            Your account has been created !<br />
+            <br />
+            <a href="/members/signin">
+                <button class="btn btn-primary"
+                        id="sendButton"
+                        type="button">
+                    sign in
+                </button>
+            </a>
+
+        </div>
+    <?php endif; ?>
+
+</section>
+
+

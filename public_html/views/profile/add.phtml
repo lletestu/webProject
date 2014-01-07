@@ -1,0 +1,119 @@
+<section>
+    
+    <div class="section-container margin-top" id="addUpdateProfile">
+        
+        <?php if ($list != null): ?>
+
+            <div class="gen-form margin-top" id="editPanel">
+
+                <form   action="/profile/update"
+                        class="form-horizontal"
+                        method="post"
+                        role="form"
+                        >
+
+                    <h2>add an update</h2>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label">Patient</label>
+                        <div class="col-sm-8 form-control-bis">
+                            <select id="listPatient"
+                                    name="listPatient"
+                                    onchange="getPatient()"
+                                    >
+                                <?php for ($i = 0; $i < sizeof($list); $i++) { ?>
+                                    <option value="<?php echo $list[$i]['email']?>">
+                                        <?php echo $list[$i]['firstname'].' '.$list[$i]['lastname'] ?>
+                                    </option>
+                                <?php } ?>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label">Member</label>
+                        <div class="col-sm-8">
+                            <input  class="form-control"
+                                    disabled
+                                    id="patient"
+                                    size="20"
+                                    type="text"
+                                    value="<?php echo $list[0]['firstname'].' '.$list[0]['lastname'] ?>"
+                                    />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label" for="content">Content</label>
+                        <div class="col-sm-8">
+                            <input  class="form-control"
+                                    id="content"
+                                    name="content"
+                                    type="text"
+                                    value=""
+                                    />
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="description">
+
+                        <label class="col-sm-4 control-label" for="date">Date</label>
+                        <div class="col-sm-8">
+                            <input  class="form-control"
+                                    id="date"
+                                    name="date"
+                                    readonly="readonly"
+                                    type="text"
+                                    />
+                            <script>getDate()</script>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label" for="service">Service</label>
+                        <div class="col-sm-8 form-control-bis">
+                            <select name="service">
+                                <option value="Generalist">Generalist</option>
+                                <option value="Radiology">Radiology</option>
+                                <option value="Cardiology">Cardiology</option>
+                                <option value="Surgery">Surgery</option>
+                                <option value="Cancerology">Cancerology</option>
+                                <option value="Psychiatry">Psychiatry</option>
+                                <option value="Maternity">Maternity</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group horizontal-center" id="editProfileButton">
+                        <button class="btn btn-primary pull-right"
+                                id="sendButton"
+                                type="submit">
+                            Send update
+                        </button>
+                    </div>
+
+            </form>
+        </div>
+
+        <?php else: ?>
+            <div id="noPatientRegistered" class="card margin-top">
+            
+                You have no patient registered yet.<br />
+                <br />
+                <a href="/members/add">
+                    <button class="btn btn-primary"
+                            id="sendButton"
+                            type="button">
+                        Add a patient
+                    </button>
+                </a>
+
+            </div>
+        <?php endif; ?>
+
+    </div>
+</section>

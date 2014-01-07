@@ -1,0 +1,128 @@
+section {
+
+	max-width:		none;
+	width:			100%;
+}
+
+	#form {
+
+		margin: 0 auto;
+		
+		@media (min-width: @screen-sm) {
+			margin:			@navbar-height auto;
+		}
+	}
+
+	#about-us {
+
+		background-color: 	@as-section-background;
+		.box-shadow-bis(@as-box-shadow-x; @as-box-shadow-y; @as-box-shadow-blur; @as-box-shadow-color);
+
+		.container {
+
+			padding: 	20px 0;
+			margin-bottom: 1px;
+
+			.card {
+
+				margin: 			20px auto;
+
+				#SN {
+					margin-top: 20px;
+				}
+
+				.socialicon {
+
+					height:		@as-socialicon-ratio*@as-socialicon-width;
+					margin:		0 4px;
+					width:		@as-socialicon-width;
+				}
+			}
+		} 
+
+		.img {
+
+			height: auto;
+		}
+
+		.info {
+
+			.position {
+
+				color:			@as-info-position-fontcolor;
+				font-family:	@as-info-position-fontfamily;
+				font-size: 		@as-info-position-fontsize;
+				font-style:		@as-info-position-fontstyle;
+				font-weight: 	@as-info-position-fontweight;
+			}
+
+			.phone {
+
+				color:			@as-info-phone-fontcolor;
+				font-family:	@as-info-phone-fontfamily;
+				font-size: 		@as-info-phone-fontsize;
+				font-style:		@as-info-phone-fontstyle;
+				font-weight: 	@as-info-phone-fontweight;
+			}
+
+			.form-control {
+
+				height: auto;
+			}
+		}
+	}
+
+	#contact-us {
+
+		height: 			@cu-section-height;
+
+		.map {
+
+			height: 			100%;
+
+	        #map-canvas {
+
+	            margin: 	0px;
+	            padding: 	0px;
+	            height: 	100%;
+	            width: 		100%;
+	        }
+
+	        .contentMap {
+
+	            height: 	@cu-map-height;
+	            width: 		@cu-map-width;
+	        }
+		}
+
+		#contact {
+
+			background-color: 	@theme-color-2;
+			float:				right;
+			height: 			auto;
+			padding:			15px 10px 0 10px;
+			position:			relative;
+			text-align:			left;
+			top: 				(-@cu-section-height - 1px);
+			right:				0;
+			max-width: 			@cu-contact-width-max;
+				width: 			@cu-contact-width;
+
+			img {
+
+				height: 		auto;
+				padding-bottom: 15px;
+				width: 			100%;
+			}
+		}
+
+		.container {
+
+			padding: 0;
+			width: 100%;
+
+			div {
+				padding: 0;
+			}
+		}
+	}

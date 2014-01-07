@@ -1,0 +1,86 @@
+<section class="memberDelete">
+
+    <div class="section-container">
+
+        <?php if (isset($isRegister) && !$isRegister): ?>
+            <p>This member is not registered</p>
+        <?php elseif (isset($hasRight) && !$hasRight): ?>
+            <p>You cannot deleted a doctor profile !</p>
+        <?php endif; ?>
+
+        <?php if (isset($isDeleted) && $isDeleted): ?>
+            <div id="wellDelete" class="card margin-top">
+
+                Patient is well deleted !<br />
+                <br />
+                <a href="/profile/index">
+                    <button class="btn btn-primary"
+                            id="sendButton"
+                            type="button">
+                        dashboard
+                    </button>
+                </a>
+
+            </div>
+        <?php else: ?>
+
+            <div class="gen-form" id="editProfile">
+
+                <form action=""
+                      class="form-horizontal"
+                      method="post"
+                      role="form"
+                      action="/members/delete"
+
+                    >
+
+                    <h2>delete patient</h2>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label" for="firstname">Firstname</label>
+
+                        <div class="col-sm-8">
+                            <input class="form-control"
+                                   id="firstname"
+                                   maxlength="30"
+                                   name="firstname"
+                                   placeholder="Firstname"
+                                   size="30"
+                                   type="text"
+                                   value=""
+                                />
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+
+                        <label class="col-sm-4 control-label" for="lastname">Lastname</label>
+
+                        <div class="col-sm-8">
+                            <input class="form-control"
+                                   id="lastname"
+                                   maxlength="30"
+                                   name="lastname"
+                                   placeholder="LASTNAME"
+                                   size="30"
+                                   type="text"
+                                   value=""
+                                />
+                        </div>
+                    </div>
+
+                    <div class="form-group horizontal-center">
+                        <button class="btn btn-primary pull-right"
+                                id="deleteButton"
+                                type="submit"
+                                onclick="return confirm('Are you sur?')"
+                            >
+                            Delete
+                        </button>
+                    </div>
+                </form>
+            </div>
+        <?php endif ?>
+    </div>
+</section>

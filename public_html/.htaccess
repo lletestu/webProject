@@ -1,0 +1,19 @@
+# The rules below basically say that if the file exists in the tree, just
+# serve it; otherwise, go to index.php. This is more future-proof for your
+# site, because if you start adding more and more content types, you don't
+# need to alter the .htaccess to accomodate them.
+# This is an important concept for the Front Controller Pattern which the
+# ZF MVC makes use of.
+RewriteEngine On
+# if filesize > 0
+RewriteCond %{REQUEST_FILENAME} -s [OR]
+# or if it is a symbolic link 
+RewriteCond %{REQUEST_FILENAME} -l [OR]
+# or if it is a directory
+RewriteCond %{REQUEST_FILENAME} -d [OR]
+# or if it is in the static folder
+RewriteCond %{REQUEST_URI} ^/static/*$
+# Go ahead, don't modify the request
+RewriteRule ^.*$ - [NC,L]
+# Otherwise redirect to index.php 
+RewriteRule ^.*$ /index.php [NC,L]

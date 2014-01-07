@@ -1,0 +1,50 @@
+body {
+	
+	// Style
+	background:		white url("/assets/img/background/Background_Cloth_Alike.png") 0 0 repeat;
+	padding-top:		@navbar-height;
+
+	// Typography
+	font:			@font-style @font-variant @font-weight @font-size/@font-line-height @font-family;
+}
+
+#body_container {
+
+    // Position & Dimensions of inner content
+	min-width:		@screen-xs-min;
+	width:			100%;
+	.horizontal-center;
+}
+
+#background{
+
+    background:		white url("/assets/img/background/Background_Cloth_Alike.png") 0 0 repeat;
+    position:		relative;
+    width:			100%;
+    z-index:    	2;
+    
+    
+    -webkit-box-shadow:	    @footer-box-shadow-x @footer-box-shadow-y @footer-box-shadow-blur @footer-box-shadow-spread @footer-box-shadow-color;
+       -moz-box-shadow:	    @footer-box-shadow-x @footer-box-shadow-y @footer-box-shadow-blur @footer-box-shadow-spread @footer-box-shadow-color;
+         -o-box-shadow:	    @footer-box-shadow-x @footer-box-shadow-y @footer-box-shadow-blur @footer-box-shadow-spread @footer-box-shadow-color;
+	    box-shadow:	    @footer-box-shadow-x @footer-box-shadow-y @footer-box-shadow-blur @footer-box-shadow-spread @footer-box-shadow-color;  
+}
+
+#noPatientRegistered {
+
+	margin-top: 	@navbar-height;
+	@media (min-width: @screen-sm-max) {
+		margin-top: 	2*@navbar-height;
+	}
+}
+
+h3 {
+
+	padding-top: 		10px;
+	padding-bottom: 	10px;
+
+	font:			@font-style @font-variant @font-weight @font-size/@font-line-height @font-family;
+	font-weight: 	bold;
+	font-size: 		@font-size*1.25;
+	color: 			@theme-color-1;
+}

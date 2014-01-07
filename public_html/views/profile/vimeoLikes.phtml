@@ -1,0 +1,37 @@
+<section>
+
+    <div id="vimeo">
+        <?php if ($arrayVimeo != null && $arrayVimeo['user'] != null && $arrayVimeo['videos'] != null): ?>
+            <div id="stats">
+                <img id="portrait" src="<?php echo $arrayVimeo['user']->user->portrait_small ?>"/>
+
+                <h2><?php echo $arrayVimeo['user']->user->display_name ?>'s Videos</h2>
+            </div>
+            <p>
+                Number of like : <?php echo $arrayVimeo['nbLikes'] ?>
+            </p>
+            <div id="thumbs">
+                <?php $count = 0; ?>
+                <table>
+                    <?php foreach ($arrayVimeo['videos']->video as $video): ?>
+                        <?php if ($count == 0): ?>
+                            <tr>
+                        <?php endif; ?>
+                        <td>
+                            <a href="<?php echo $video->url ?>"><img
+                                    src="<?php echo $video->thumbnail_medium ?>"/></a>
+                        </td>
+                        <?php $count++;
+                        if ($count == 3): ?>
+                            <?php $count = 0;?>
+                            </tr>
+                        <?php endif; ?>
+                    <?php endforeach ?>
+                </table>
+            </div>
+        <?php else: ?>
+            <p>No Viameo profile found. You Viameo profile must be your user name which you can see in the header.</p>
+        <?php endif; ?>
+    </div>
+
+</section>
